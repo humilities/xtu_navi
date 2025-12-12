@@ -96,7 +96,7 @@ function drawPath(pathNodes) {
   // 清除原有路线
   if (pathLayer) map.removeLayer(pathLayer);
   // 提取坐标（Leaflet：[y, x]）
-  const latlngs = pathNodes.map(node => [node.y, node.x]);
+  const latlngs = pathNodes.map(node => [imgHeight-node.y, node.x]);
   // 绘制红色粗线
   pathLayer = L.polyline(latlngs, {
     color: '#ff0000',
