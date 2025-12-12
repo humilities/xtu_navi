@@ -26,7 +26,9 @@ async function initMap() {
 
   // 4. 标注所有景点
   graph.nodes.forEach(node => {
-    const marker = L.marker([node.y, node.x])
+    const correctedY = imgHeight - node.y; // 翻转 Y 轴
+
+    const marker = L.marker([correctedY, node.x])
       .addTo(map)
       .bindPopup(`<strong>${node.name}</strong><br>${node.desc}`);
     // 点击景点设为起点/终点（可选）
