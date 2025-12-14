@@ -42,11 +42,20 @@ async function initMap() {
   // 5. 绑定查询按钮事件
   document.getElementById('search-btn').addEventListener('click', searchPath);
   // 6. 绑定时段切换事件
+  // 修改 map.js 中时段切换事件的绑定代码（大约在 initMap 函数的第 6 步）
   document.getElementById('time-period').addEventListener('change', () => {
-    if (document.getElementById('start').value && document.getElementById('end').value) {
+    const startVal = document.getElementById('start').value;
+    const endVal = document.getElementById('end').value;
+    // 检查起点和终点是否已选择（非空字符串）
+    if (startVal && endVal && startVal !== endVal) {
       searchPath();
     }
   });
+//   document.getElementById('time-period').addEventListener('change', () => {
+//     if (document.getElementById('start').value && document.getElementById('end').value) {
+//       searchPath();
+//     }
+//   });
 
   // 7. 初始化下拉框（起点/终点）
   initSelectOptions();
